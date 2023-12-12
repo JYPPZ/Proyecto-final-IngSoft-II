@@ -1,0 +1,234 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Parcial API",
+    "description": "API para gestionar stocks y usuarios",
+    "version": "1.0.0"
+  },
+  "host": "localhost:8080",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/query/stocks/{idUser}": {
+      "get": {
+        "summary": "Obtener stocks por ID de usuario",
+        "parameters": [
+          {
+            "name": "idUser",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Stock"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/query/stock/{idUser}/{idStock}": {
+      "get": {
+        "summary": "Obtener stock por ID de usuario y ID de stock",
+        "parameters": [
+          {
+            "name": "idUser",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "idStock",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "schema": {
+              "$ref": "#/definitions/Stock"
+            }
+          }
+        }
+      }
+    },
+    "/query/addStock/{idUser}": {
+      "post": {
+        "summary": "Agregar stock a un usuario",
+        "parameters": [
+          {
+            "name": "idUser",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "stock",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Stock"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa"
+          }
+        }
+      }
+    },
+    "/query/removeStock/{idUser}/{idStock}": {
+      "delete": {
+        "summary": "Eliminar stock de un usuario",
+        "parameters": [
+          {
+            "name": "idUser",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "idStock",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa"
+          }
+        }
+      }
+    },
+    "/query/newUppLim/{idUser}/{idStock}/{upperThreshold}": {
+      "patch": {
+        "summary": "Actualizar umbral superior",
+        "parameters": [
+          {
+            "name": "idUser",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "idStock",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "upperThreshold",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa"
+          }
+        }
+      }
+    },
+    "/query/newLowLim/{idUser}/{idStock}/{lowerThreshold}": {
+      "patch": {
+        "summary": "Actualizar umbral inferior",
+        "parameters": [
+          {
+            "name": "idUser",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "idStock",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "lowerThreshold",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa"
+          }
+        }
+      }
+    },
+    "/stock": {
+      "get": {
+        "summary": "Obtener todos los stocks",
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Stock"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/registerUser/{idUser}": {
+      "post": {
+        "summary": "Registrar usuario",
+        "parameters": [
+          {
+            "name": "idUser",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Stock": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "currentPrice": {
+          "type": "number"
+        },
+        "previousPrice": {
+          "type": "number"
+        },
+        "lowerThreshold": {
+          "type": "number"
+        },
+        "upperThreshold": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}
