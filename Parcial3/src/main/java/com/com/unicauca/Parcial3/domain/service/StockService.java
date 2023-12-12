@@ -21,11 +21,4 @@ public class StockService {
         return stockRepository.findAll();
     }
 
-    /**
-     * @param id Stock id to search
-     * @return Stock if found, null if not found
-     */
-    public Stock findById(int id) {
-        return stockRepository.findById(id);
-    }
 }

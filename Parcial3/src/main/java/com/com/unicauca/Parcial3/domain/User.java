@@ -9,13 +9,9 @@ public class User {
     private int id;
     private ArrayList<Stock> stocks;
 
-    public User() {
-        stocks = new ArrayList<Stock>();
-    }
-
     public User(int id) {
         this.id = id;
-        stocks = new ArrayList<Stock>();
+        stocks = new ArrayList<>();
     }
 
     public void addStock(Stock stock) {

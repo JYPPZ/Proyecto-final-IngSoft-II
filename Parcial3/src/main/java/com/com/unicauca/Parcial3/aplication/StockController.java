@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 public class StockController {
-    private StockService stockService;
+    private final StockService stockService;
 
     @Autowired
     public StockController(StockService stockService) {

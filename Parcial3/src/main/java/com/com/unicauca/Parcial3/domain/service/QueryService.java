@@ -65,9 +65,8 @@ public class QueryService {
      * @param idUser         User id to search
      * @param idStock        Stock id to update
      * @param upperThreshold New upper threshold
-     * @return true if stock was found and updated, false if not found
      */
-    public boolean updateUpperThreshold(int idUser, int idStock, double upperThreshold) {
+    public void updateUpperThreshold(int idUser, int idStock, double upperThreshold) {
         User userAux = userRepository.findById(idUser);
         if (userAux != null) {
             boolean updated = userAux.updateUpperThreshold(idStock, upperThreshold);
@@ -75,18 +74,15 @@ public class QueryService {
                 stockRepository.findById(idStock).setUpperThreshold(upperThreshold);
                 sendMessage("Se ha actualizado el umbral superior para la acción " + idStock);
             }
-            return updated;
         }
-        return false;
     }
 
     /**
      * @param idUser         User id to search
      * @param idStock        Stock id to update
      * @param lowerThreshold New upper threshold
-     * @return true if stock was found and updated, false if not found
      */
-    public boolean updateLowerThreshold(int idUser, int idStock, double lowerThreshold) {
+    public void updateLowerThreshold(int idUser, int idStock, double lowerThreshold) {
         User userAux = userRepository.findById(idUser);
         if (userAux != null) {
             boolean updated = userAux.updateLowerThreshold(idStock, lowerThreshold);
@@ -94,17 +90,14 @@ public class QueryService {
                 stockRepository.findById(idStock).setLowerThreshold(lowerThreshold);
                 sendMessage("Se ha actualizado el umbral inferior para la acción " + idStock);
             }
-            return updated;
         }
-        return false;
     }
 
     /**
      * @param idUser User id to search
      * @param stock  Stock id to search
-     * @return true if stock was found and deleted, false if not found
      */
-    public boolean addStock(int idUser, Stock stock) {
+    public void addStock(int idUser, Stock stock) {
         User userAux = userRepository.findById(idUser);
         Stock stockAux = stockRepository.findById(stock.getId());
         if (userAux != null) {
@@ -114,24 +107,19 @@ public class QueryService {
                 userRepository.findById(idUser).addStock(stock);
                 stockRepository.addStock(stock);
             }
-            return true;
         }
-        return false;
     }
 
     /**
      * @param idUser  User id to search
      * @param idStock Stock id to search
-     * @return true if stock was found and deleted, false if not found
      */
-    public boolean removeStock(int idUser, int idStock) {
+    public void removeStock(int idUser, int idStock) {
         User userAux = userRepository.findById(idUser);
         Stock stockAux = stockRepository.findById(idStock);
         if (userAux != null && stockAux != null) {
             userAux.removeStock(stockAux);
-            return true;
         }
-        return false;
     }
 
     /**

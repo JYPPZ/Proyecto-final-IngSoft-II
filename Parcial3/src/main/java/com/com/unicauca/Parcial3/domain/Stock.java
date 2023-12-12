@@ -15,14 +15,6 @@ public class Stock {
 
     }
 
-    /**
-     * @param id
-     * @param name
-     * @param currentPrice
-     * @param previousPrice
-     * @param lowerThreshold
-     * @param upperThreshold
-     */
     public Stock(int id, String name, double currentPrice, double previousPrice, double lowerThreshold, double upperThreshold) {
         this.id = id;
         this.name = name;

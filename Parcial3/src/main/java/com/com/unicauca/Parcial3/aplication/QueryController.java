@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping("/query")
 public class QueryController {
 
-    private QueryService queryService;
+    private final QueryService queryService;
     @Autowired
     public QueryController(QueryService queryService) {
         this.queryService = queryService;
