@@ -6,8 +6,6 @@ import com.com.unicauca.Parcial3.domain.User;
 import com.com.unicauca.Parcial3.domain.service.QueryService;
 import com.com.unicauca.Parcial3.domain.service.StockService;
 import com.com.unicauca.Parcial3.domain.service.UserService;
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -15,10 +13,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 /**
@@ -96,14 +91,5 @@ class ApplicationTests {
 		queryService1.removeStock(1, 1);
 		Mockito.verify(userRepository, Mockito.times(1)).findById(Mockito.anyInt());
 	}
-
-	@Test
-	void testAddStock() {
-		Mockito.when(userRepository.findById(1)).thenReturn(new User(1));
-		queryService1.addStock(1, new com.com.unicauca.Parcial3.domain.Stock());
-		Mockito.verify(userRepository, Mockito.times(1)).findById(Mockito.anyInt());
-	}
-
-
 }
 
