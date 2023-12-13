@@ -1,0 +1,26 @@
+version: "3"
+services:
+  publisher:
+    image: "parcial3:latest"
+    ports:
+      - "8080:8080"
+    networks:
+      - conexion
+
+  consumer:
+    image: "su-agente-financiero:latest"
+    ports:
+      - "8081:8081"
+    networks:
+      - conexion
+
+  conejo:
+    image: "rabbitmq:3.12-management"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    networks:
+      - conexion
+
+networks:
+  conexion:
